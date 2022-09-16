@@ -19,7 +19,7 @@ Darcy Hayes
 A cataloging application for categorizing and displaying different apps on various app stores.
 
 ### Authors
-Caden Citro
-Amanda Harkins
-J Scherrer
+Caden Citro <br />
+Amanda Harkins <br />
+J Scherrer <br />
 Bill Hutson
