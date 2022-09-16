@@ -11,7 +11,7 @@ Taking inspiration from SCAN, LOOK, OTHDSA, and other algorithms, this algorithm
 Once reaching the floor of the first request in the queue, if a passenger is to get on at this stop as well, the elevator adds that to the priority queue and reranks every floor based on the previously stated conditions. Upon finishing the request, the elevator will remove the request from every priority queue from every elevator. This means that if elevator e0  completes a request on the third floor, it removes that request from the queues of e1 and e2 (assuming that there are three elevators operating in this example). The elevator then looks at the new, updated first request, and completes that, repeating the process above. This process will repeat until the queue is empty and there are no other requests to complete.
 
 ### Authors
-Caden Citro
+Caden Citro <br />
 Darcy Hayes
 
 ## EveryApp
