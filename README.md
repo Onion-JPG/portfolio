@@ -2,6 +2,13 @@
 
 A portfolio of code I have written in my academic career.
 
+## CastHelper
+
+Case Helper is a python program that interfaces with the RIOT Games API using a library called Cassiopia (https://github.com/meraki-analytics/cassiopeia). Cast Helper is designed to help broadcasters of the game League Of Legends by providing a quick and easy way to find ability names of champions being played in a match. This project also makes use of CustomTkinter (https://github.com/TomSchimansky/CustomTkinter) to create a better user experience. Unfortunately this project does not work unless you have a RIOT games API key.
+
+To use this tool, download the files and make a file named config.py. within that file make a apikey variable with the line:
+ ```apikey = "PUT A VALID API KEY HERE"```
+
 ## Elevator Algorithm
 
 Simply put, this is an algorithm used for routing elevators.  
