@@ -30,3 +30,10 @@ Caden Citro <br />
 Amanda Harkins <br />
 J Scherrer <br />
 Bill Hutson
+
+## Sudoku Solver
+
+A java program that solves Sudoku puzzles. It takes in a 2D array, where each 9 element array represents the nth row, and each element the nth column. This project originated from doing a technical interview for a company, which I was unable to solve in the time given, but worked on after the fact to make sure I could do it in the future.
+
+### Authors
+Caden Citro
