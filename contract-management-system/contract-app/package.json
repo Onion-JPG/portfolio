@@ -1,0 +1,54 @@
+{
+  "name": "contract-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "prisma generate && next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "prisma": {
+    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
+  },
+  "dependencies": {
+    "@nativedocuments/docx-wasm": "^2.2.13-1561490777",
+    "@prisma/client": "^5.6.0",
+    "array-move": "^4.0.0",
+    "bcrypt": "^5.1.1",
+    "bulma": "^0.9.4",
+    "bulma-calendar": "^6.1.19",
+    "bulma-extensions": "^6.2.7",
+    "bulma-switch": "^2.0.4",
+    "canvas": "^2.11.2",
+    "docx-pdf": "^0.0.1",
+    "fortawesome": "^0.0.1-security",
+    "mammoth": "^1.7.1",
+    "mysql": "^2.18.1",
+    "next": "14.0.2",
+    "next-auth": "^4.24.5",
+    "nodemailer": "^6.9.13",
+    "prisma": "^5.6.0",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-router-dom": "^6.20.1",
+    "react-sortable-hoc": "^2.0.0",
+    "resend": "^3.2.0"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/file-saver": "^2.0.7",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.0.2",
+    "typescript": "^5"
+  },
+  "overrides": {
+    "react-sortable-hoc": {
+      "react": "18.2.0",
+      "react-dom": "18.2.0"
+    }
+  }
+}

@@ -1,0 +1,73 @@
+-- file for inserting to local database.
+-- make sure to run prisma generate first
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Dumping data for table `_documenttoworkflows`
+--
+
+INSERT INTO `_documenttoworkflows` VALUES (1,1),(2,1),(6,2),(5,3),(6,3),(3,4),(4,4),(1,5),(1,6);
+
+--
+-- Dumping data for table `account`
+--
+
+INSERT INTO `account` VALUES (0,'admin','password','Admin',1,'Admin','User','admin@example.com'),(1,'manager','password','Manager',1,'John','Doe','manager@example.com'),(2,'basicUser','password','BasicUser',1,'Jane','Doe','user@example.com'),(3,'NVidiaUser','password','Associate',0,'NVidia','User','user@NVidia.com'),(4,'CorsairUser','password','Associate',0,'Corsair','User','user@Corsair.com'),(5,'MicrosoftUser','password','Associate',0,'Microsoft','User','user@Microsoft.com'),(6,'AdobeUser','password','Associate',0,'Adobe','User','user@Adobe.com');
+
+--
+-- Dumping data for table `businessassociate`
+--
+
+INSERT INTO `businessassociate` VALUES (3,1),(4,2),(5,3),(6,4);
+
+--
+-- Dumping data for table `document`
+--
+
+INSERT INTO `document` VALUES (1,1,'Nda','NVidiaNDA'),(2,3,'MasterServiceAgreement','NVidiaMSA'),(3,1,'Nda','CorsairNDA'),(4,4,'MasterServiceAgreement','CorsairMSA'),(5,2,'Nda','MicrosoftNDA'),(6,6,'Nda','AdobeNDA'),(7,6,'Nda','test');
+
+--
+-- Dumping data for table `documenthistory`
+--
+
+INSERT INTO `documenthistory` VALUES (1,1,'Creation','2024-04-13 19:37:18.843'),(2,3,'Creation','2024-04-13 19:43:29.797'),(3,1,'Creation','2024-04-13 19:49:23.547'),(4,4,'Creation','2024-04-13 19:52:39.720'),(5,2,'Creation','2024-04-13 19:53:28.575'),(6,6,'Creation','2024-04-13 19:57:40.267'),(7,6,'Creation','2024-04-15 13:51:20.838');
+
+--
+-- Dumping data for table `documentmetadata`
+--
+
+INSERT INTO `documentmetadata` VALUES (6,'Adobe NDA','Adobe','2024-01-01 00:00:00.000','2025-01-01 00:00:00.000',1),(4,'Corsair MSA','Corsair','2024-01-01 00:00:00.000','2025-01-01 00:00:00.000',1),(3,'Corsair NDA','Corsair','2024-01-01 00:00:00.000','2025-01-01 00:00:00.000',1),(5,'Microsoft NDA','Microsoft','2024-01-01 00:00:00.000','0025-01-20 00:00:00.000',1),(2,'NVidia MSA','NVidia','2024-01-01 00:00:00.000','2025-01-01 00:00:00.000',1),(1,'NVidia NDA','NVidia','2024-01-01 00:00:00.000','2025-01-01 00:00:00.000',1),(7,'Test','Adobe','2024-04-09 00:00:00.000','2024-04-16 00:00:00.000',1);
+
+--
+-- Dumping data for table `externalentity`
+--
+
+INSERT INTO `externalentity` VALUES (1,'NVidia','123 NVidia Lane'),(2,'Corsair','Corsair Place'),(3,'Microsoft','123 Microsoft Street'),(4,'Adobe','111 Adobe St');
+
+--
+-- Dumping data for table `userqueue`
+--
+
+INSERT INTO `userqueue` VALUES (1,1,'Draft'),(1,3,'Draft'),(2,5,'Draft'),(3,2,'Draft'),(4,4,'Draft'),(6,6,'Draft'),(6,7,'Draft');
+
+--
+-- Dumping data for table `workflows`
+--
+
+INSERT INTO `workflows` VALUES (1,'NVidia Workflow',2,3),(2,'Adobe Workflow',1,2),(3,'Microsoft Workflow',1,2),(4,'Corsair Workflow',1,2);
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;

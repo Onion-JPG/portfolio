@@ -1,0 +1,152 @@
+// Whenever you make changes to this file, push the Prisma schema state to the database server
+// $ npx prisma db push
+
+// Run this when you first download the project to generate artifacts (e.g., Prisma Client) on your local computer
+// $ npx prisma generate
+
+// Other useful commands:
+// Validate your Prisma schema
+// $ npx prisma validate
+
+// Format your Prisma schema
+// $ npx prisma format
+
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum DocumentType {
+  Nda
+  WorkingAgreement
+  MasterServiceAgreement
+}
+
+enum AccountType {
+  Admin
+  Manager
+  BasicUser
+  Associate
+  Legal
+  Procurement
+  Finance
+}
+
+enum Status {
+  Draft
+  Review
+  Active
+  Inactive
+}
+
+enum ChangeType {
+  Deletion
+  Modification
+  Addition
+  Creation
+}
+
+model Account {
+  userID            Int                 @id @default(autoincrement())
+  username          String              @unique
+  password          String
+  accountType       AccountType
+  isInternal        Boolean
+  firstName         String
+  lastName          String
+  email             String              @unique
+  BusinessAssociate BusinessAssociate[]
+  UserQueue         UserQueue[]
+  Document          Document[]
+  DocumentHistory   DocumentHistory[]
+  Workflows         Workflows[]
+}
+
+model BusinessAssociate {
+  user     Account        @relation(fields: [userID], references: [userID])
+  userID   Int
+  entity   ExternalEntity @relation(fields: [entityID], references: [entityID])
+  entityID Int
+
+  @@unique([userID, entityID])
+  @@index([entityID])
+}
+
+model ExternalEntity {
+  entityID          Int                 @id @default(autoincrement())
+  entityName        String
+  address           String
+  BusinessAssociate BusinessAssociate[]
+}
+
+model UserQueue {
+  user        Account  @relation(fields: [userID], references: [userID])
+  userID      Int
+  document    Document @relation(fields: [docID], references: [docID])
+  docID       Int
+  queueStatus Status
+
+  @@unique([userID, docID])
+  @@index([docID])
+}
+
+model Document {
+  docID            Int                @id @default(autoincrement())
+  owner            Account            @relation(fields: [ownerID], references: [userID])
+  ownerID          Int
+  docType          DocumentType
+  fileName         String
+  UserQueue        UserQueue[]
+  Workflows        Workflows[]
+  DocumentMetadata DocumentMetadata[]
+  DocumentHistory  DocumentHistory[]
+
+  @@index([ownerID])
+}
+
+model DocumentMetadata {
+  document    Document @relation(fields: [docID], references: [docID])
+  docID       Int
+  docName     String   @unique
+  companyName String
+  startDate   DateTime
+  endDate     DateTime
+  renewalType Boolean
+
+  @@index([docID])
+}
+
+model DocumentHistory {
+  document   Document   @relation(fields: [docID], references: [docID])
+  docID      Int
+  user       Account    @relation(fields: [userID], references: [userID])
+  userID     Int
+  changeType ChangeType
+  changeDate DateTime
+
+  @@unique([changeDate])
+  @@index([docID])
+  @@index([userID])
+}
+
+model Workflows {
+  workflowID      Int        @id @default(autoincrement())
+  workflowName    String
+  owner           Account    @relation(fields: [ownerID], references: [userID])
+  ownerID         Int
+  workflowStatus  Int
+  inReview        Boolean
+  lastChange      DateTime
+  notified        Boolean
+  acceptingNew    Boolean
+  workflowSetup   String
+  Document        Document[]
+
+  @@unique([workflowID])
+  @@index([ownerID])
+}
